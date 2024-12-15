@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Counter</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>  
+
+    <!-- menggunakan babel compiler  -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+
+        function Button(props){
+            return(
+                <button onClick={props.nama}>{props.jenis}</button>
+            )
+        }
+
+        function HomePage(){
+            const[nilai, setNilai] = React.useState(0);
+            
+            function handleIncrement(){
+                setNilai(nilai+1);
+            }
+            
+            function handleDecrement(){
+                setNilai(nilai-1);
+            }
+            
+            function handleReset(){
+                setNilai(0);
+            }
+            return (   
+            <>
+            <Button nama={handleIncrement} jenis="+" />
+            <p>{nilai}</p> 
+            <Button nama={handleDecrement} jenis="-" />
+            <Button nama={handleReset} jenis="Reset" />
+            </>    
+        )   
+        }
+
+        root.render(
+        <HomePage/>
+        )
+    </script>
+</body>
+</html>

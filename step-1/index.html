@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn React</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>  
+
+    <!-- menggunakan babel compiler  -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- <script type="text/javascript"> dari js=> jsx untuk compiler menggunakan babel
+        dikarenakan browser tidak mengenali <h1> di javascript, sehingga dibutuhkan jsx untuk mengenalinya-->
+    <script type="text/babel">
+        
+        function Header(){
+            return( <>    
+                <h1>Hello word</h1>
+                <h2>Hai</h2>
+            </>)
+        }
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        // root.render(
+        //    <Header/>
+        // );
+        // dibawah ini contoh penerapan component bersarang
+        function HomePage(){
+            return(
+            <>    
+                <Header/>
+            </>)
+        }
+        root.render(
+           <HomePage/>
+        );
+    </script>
+</body>
+</html>

@@ -14,14 +14,22 @@
 <body>
     <div id="root"></div>
 
+   
+
     <!-- <script type="text/javascript"> dari js=> jsx untuk compiler menggunakan babel
         dikarenakan browser tidak mengenali <h1> di javascript, sehingga dibutuhkan jsx untuk mengenalinya-->
     <script type="text/babel">
-        
-        function Header(){
+        // function Header(props){
+        //     return( <>    
+        //         <h1>Hello word {props.author}</h1>
+        //         <h2>Hai selamat {props.time}</h2>
+        //     </>)
+        // }
+        // refactor props menggunakan desctructuring, ternary operator
+        function Header({author,time}){
             return( <>    
-                <h1>Hello word</h1>
-                <h2>Hai</h2>
+                <h1>Hello word {author ? author : 'Syamaidzar, ini menggunakan dectructuring ternary operator'}</h1>
+                <h2>Hai selamat {time ? time : 'Sore'}</h2>
             </>)
         }
         const container = document.getElementById('root');
@@ -31,11 +39,27 @@
         // );
         // dibawah ini contoh penerapan component bersarang
         function HomePage(){
+            const [likes,setLikes] = React.useState(0);
+        function handleClick(){
+            setLikes(likes+1);
+        }  
+            // menampilkan elemen menggunakan pengulangan 
+            const Hobies = ['Basket','Jogging','Membaca','Basket'];
             return(
             <>    
+                <Header author="Riza" time="Siang"/>
+                <Header author="Afif" time="Malam"/>
                 <Header/>
+                menampilkan menggunakan map
+                <ul>
+                    {Hobies.map((hoby)=>(
+                        <li key={hoby}>{hoby}</li>    
+                    ))}
+                </ul>
+                <button onClick={handleClick}>Like ({likes})</button>
             </>)
         }
+        
         root.render(
            <HomePage/>
         );

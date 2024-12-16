@@ -140,9 +140,9 @@ button {
   font-weight: bold;
 }
 
-span {
+/* span {
   text-decoration: line-through;
-}
+} */
 /* tablet */
 @media (max-width: 768px) {
   html {
